@@ -1,16 +1,18 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #050505;
-  --bg-panel: #0a0a0a;
-  --fg: #f2f0ec;
-  --fg-dim: rgba(242, 240, 236, 0.42);
-  --fg-faint: rgba(242, 240, 236, 0.24);
-  --line: rgba(242, 240, 236, 0.14);
-  --line-strong: rgba(242, 240, 236, 0.28);
-  --accent: #c9b48a;
-  --accent-dim: rgba(201, 180, 138, 0.5);
-
+  --bg: #090909;
+  --bg-panel: #111110;
+  --surface: #181817;
+  --surface-raised: #242422;
+  --fg: #f0ede7;
+  --fg-dim: #aaa59d;
+  --fg-faint: #6d6a64;
+  --line: rgba(240, 237, 231, 0.14);
+  --line-strong: rgba(240, 237, 231, 0.32);
+  --accent: #d87943;
+  --accent-dim: #a95c35;
+  --glow: rgba(216, 121, 67, 0.2);
   --font-display: var(--font-familjen);
   --font-body: var(--font-manrope);
   --font-fa: var(--font-vazirmatn);
@@ -30,50 +32,65 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
   --font-fa: var(--font-fa);
-  --font-mono: var(--font-mono);
+ --font-mono: var(--font-mono);
 }
 
-* {
-  border-color: var(--line);
+/* Persian (fa) — route all font variables through Vazirmatn */
+html[lang="fa"] {
+  --font-display: var(--font-fa);
+  --font-body: var(--font-fa);
+  --font-mono: var(--font-fa);
 }
 
-html {
-  background: var(--bg);
-  color-scheme: dark;
-}
+/* Persian-specific font-size bumps for readability */
+html[lang="fa"] .section-label { font-size: 11px; letter-spacing: 0.08em; }
+html[lang="fa"] .text-\[10px\] { font-size: 11px; }
+html[lang="fa"] .text-\[9px\] { font-size: 10px; }
 
-body {
-  background: var(--bg);
-  color: var(--fg);
-  font-family: var(--font-body);
-}
+* { border-color: var(--line); }
+html { background: var(--bg); color-scheme: dark; }
+body { min-width: 320px; background: var(--bg); color: var(--fg); font-family: var(--font-body); }
+html[lang="fa"] body { font-family: var(--font-fa); }
+::selection { background: var(--accent); color: var(--bg); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-html[lang="fa"] body {
-  font-family: var(--font-fa);
+.architectural-shell {
+  background:
+    radial-gradient(circle at 78% 8%, rgba(216,121,67,.12), transparent 25rem),
+    radial-gradient(circle at 12% 48%, rgba(255,255,255,.035), transparent 28rem),
+    linear-gradient(135deg, #090909 0%, #151514 52%, #0a0a09 100%);
 }
-
-::selection {
-  background: var(--accent);
-  color: #050505;
+.architectural-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .22;
+  background-image: linear-gradient(120deg, transparent 0 49.8%, rgba(240,237,231,.08) 50%, transparent 50.2%);
+  background-size: 180px 180px;
+  mask-image: linear-gradient(to bottom, black, transparent 80%);
 }
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+.metal-panel {
+  background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.015) 42%, rgba(0,0,0,.3));
+  box-shadow: inset 0 1px rgba(255,255,255,.12), 0 24px 80px rgba(0,0,0,.3);
 }
+.architecture-rule { position: relative; }
+.architecture-rule::before { content: ""; position: absolute; top: 0; inset-inline-start: 0; width: 4rem; height: 2px; background: var(--accent); }
+.hero-frame { position: relative; min-height: 34rem; overflow: hidden; border: 1px solid var(--line-strong); background: #050505; }
+.hero-frame::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, transparent 38%, rgba(9,9,9,.92)); }
+.service-row { border-top: 1px solid var(--line); transition: background .3s, padding .3s, border-color .3s; }
+.service-row:hover { border-color: var(--accent-dim); background: rgba(255,255,255,.035); padding-inline: 1.25rem; }
+.info-tile { min-height: 9rem; border: 1px solid var(--line); background: rgba(255,255,255,.025); transition: border-color .3s, background .3s, transform .3s; }
+.info-tile:hover { border-color: var(--accent-dim); background: rgba(216,121,67,.07); transform: translateY(-3px); }
+.wordmark { letter-spacing: .18em; }
+.display-title { font-size: clamp(3.4rem, 9vw, 9.5rem); line-height: .86; letter-spacing: -.07em; }
+.section-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.bracket-link { position: relative; }
+.bracket-link::before, .bracket-link::after { position: absolute; top: 50%; color: var(--accent); opacity: 0; transition: opacity .25s, transform .25s; }
+.bracket-link::before { content: "["; left: -1rem; transform: translateX(6px) translateY(-50%); }
+.bracket-link::after { content: "]"; right: -1rem; transform: translateX(-6px) translateY(-50%); }
+.bracket-link:hover::before, .bracket-link:hover::after { opacity: 1; transform: translate(0, -50%); }
 
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-.num-tabular {
-  font-variant-numeric: tabular-nums;
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
 }

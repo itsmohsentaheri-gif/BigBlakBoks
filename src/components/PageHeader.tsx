@@ -1,18 +1,3 @@
-export default function PageHeader({
-  eyebrow,
-  kicker,
-}: {
-  eyebrow: string;
-  kicker: string;
-}) {
-  return (
-    <div className="flex flex-col gap-1">
-      <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent-dim">
-        {kicker}
-      </span>
-      <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-fg-faint">
-        {eyebrow}
-      </span>
-    </div>
-  );
+export default function PageHeader({ eyebrow, kicker }: { eyebrow: string; kicker: string }) {
+  return <div className="architecture-rule flex flex-col gap-2 pt-5"><span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">{kicker}</span><span className="font-mono text-[10px] uppercase tracking-[0.12em] text-fg-faint">{eyebrow}</span></div>;
 }

@@ -1,20 +1,3 @@
-export default function InfoBlocks({
-  blocks,
-}: {
-  blocks: readonly { label: string; value: string }[];
-}) {
-  return (
-    <dl className="grid grid-cols-1 gap-6 border-t border-line pt-6 sm:grid-cols-2">
-      {blocks.map((block) => (
-        <div key={block.label} className="flex flex-col gap-1.5">
-          <dt className="font-mono text-[11px] uppercase tracking-[0.12em] text-fg-faint">
-            {block.label}
-          </dt>
-          <dd className="font-display text-base font-medium text-fg/90">
-            {block.value}
-          </dd>
-        </div>
-      ))}
-    </dl>
-  );
+export default function InfoBlocks({ blocks }: { blocks: readonly { label: string; value: string }[] }) {
+  return <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">{blocks.map((block, index) => <div key={block.label} className="info-tile flex flex-col justify-between gap-8 p-5 md:p-6"><dt className="flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.16em] text-accent"><span>{block.label}</span><span className="text-fg-faint">0{index + 1}</span></dt><dd className="max-w-[15rem] font-display text-lg font-medium leading-tight text-fg">{block.value}</dd></div>)}</dl>;
 }

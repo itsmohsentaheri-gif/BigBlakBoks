@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -26,7 +25,7 @@ const manrope = Manrope({
 });
 
 const vazirmatn = Vazirmatn({
-  subsets: ["arabic"],
+  subsets: ["arabic", "latin"],
   variable: "--font-vazirmatn",
   weight: ["400", "500", "600", "700"],
 });

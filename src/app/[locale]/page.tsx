@@ -5,61 +5,53 @@ import InfoBlocks from "@/components/InfoBlocks";
 import Reveal from "@/components/Reveal";
 import { Link } from "@/i18n/navigation";
 
-export default async function HomePage({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
+export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
   const t = await getTranslations("home");
-
   const blocks = t.raw("blocks") as { label: string; value: string }[];
 
   return (
-    <div className="mx-auto flex max-w-3xl flex-col gap-10">
-      <Reveal>
-        <PageHeader eyebrow={t("eyebrow")} kicker={t("kicker")} />
-      </Reveal>
+    <div className="mx-auto max-w-[1440px]">
+      <section className="grid min-h-[calc(100vh-7rem)] items-center gap-12 py-12 lg:grid-cols-[1.02fr_.98fr] lg:gap-16 lg:py-20">
+        <div className="flex flex-col gap-9">
+          <Reveal><PageHeader eyebrow={t("eyebrow")} kicker={t("kicker")} /></Reveal>
+          <Reveal delay={0.08}>
+            <h1 className="display-title max-w-4xl font-display font-semibold text-fg">
+              <span className="block text-fg-dim">{t("headlineLine1")}</span>
+              <span className="block text-fg">{t("headlineLine2")}</span>
+              <span className="block text-accent">{t("headlineLine3")}</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.16}><p className="max-w-xl text-base leading-relaxed text-fg-dim md:text-lg">{t("lead")}</p></Reveal>
+          <Reveal delay={0.22}>
+            <Link href="/products" className="bracket-link inline-flex w-fit items-center gap-3 border-b border-line-strong pb-2 font-mono text-[11px] uppercase tracking-[0.15em] text-fg transition-colors hover:border-accent hover:text-accent">
+              {t("ctaLabel")} <span aria-hidden>→</span>
+            </Link>
+          </Reveal>
+        </div>
+        <Reveal delay={0.12} className="hero-frame metal-panel">
+          <div className="flex h-full flex-col items-center justify-center gap-3 p-8">
+            <div className="flex items-center gap-1">
+              <span className="wordmark font-display text-5xl font-semibold md:text-7xl">BIGBLAK<span className="text-accent">BOKS</span></span>
+            </div>
+            <span className="font-mono text-[10px] uppercase tracking-[.22em] text-fg-faint">systems engineering lab</span>
+          </div>
+          <div className="absolute inset-x-6 bottom-7 z-10 flex items-end justify-between gap-5">
+            <div><span className="section-label">the black box / 001</span><p className="mt-3 max-w-sm font-display text-3xl font-semibold leading-[.95] text-fg md:text-5xl">complexity inside.<br /><span className="text-fg-dim">clarity outside.</span></p></div>
+            <span className="font-mono text-[10px] text-fg-faint">SCROLL ↓</span>
+          </div>
+        </Reveal>
+      </section>
 
-      <Reveal delay={0.08}>
-        <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-fg sm:text-5xl md:text-6xl">
-          <span className="block text-fg-dim">{t("headlineLine1")}</span>
-          <span className="block text-fg-dim">{t("headlineLine2")}</span>
-          <span className="block text-fg">{t("headlineLine3")}</span>
-        </h1>
-      </Reveal>
-
-      <Reveal delay={0.16}>
-        <p className="max-w-xl text-base leading-relaxed text-fg-dim md:text-lg">
-          {t("lead")}
-        </p>
-      </Reveal>
-
-      <Reveal delay={0.22}>
+      <section className="border-t border-line py-16 md:py-24">
+        <div className="mb-8 flex items-end justify-between gap-5"><div><span className="section-label">/ the studio</span><h2 className="mt-4 max-w-xl font-display text-4xl font-semibold leading-none tracking-[-.05em] md:text-6xl">{t("statement")}</h2></div><span className="hidden font-mono text-[10px] text-fg-faint md:block">BB / 2026</span></div>
         <InfoBlocks blocks={blocks} />
-      </Reveal>
+      </section>
 
-      <Reveal delay={0.28}>
-        <p className="max-w-xl border-t border-line pt-6 font-display text-lg font-medium leading-snug text-fg/85">
-          {t("statement")}
-        </p>
-      </Reveal>
-
-      <Reveal delay={0.34}>
-        <Link
-          href="/products"
-          className="group inline-flex w-fit items-center gap-3 border-b border-line-strong pb-1 font-mono text-[12px] uppercase tracking-[0.15em] text-fg transition-colors hover:border-accent hover:text-accent"
-        >
-          {t("ctaLabel")}
-          <span
-            aria-hidden
-            className="transition-transform group-hover:translate-x-1 rtl:group-hover:-translate-x-1"
-          >
-            →
-          </span>
-        </Link>
-      </Reveal>
+      <section className="border-t border-line py-16 md:py-24">
+        <div className="grid gap-8 md:grid-cols-[.35fr_1fr]"><span className="section-label">/ what we build</span><div><h2 className="max-w-3xl font-display text-5xl font-semibold leading-[.92] tracking-[-.06em] md:text-8xl">{t("headlineLine3")}</h2><Link href="/products" className="bracket-link mt-10 inline-flex border-b border-line-strong pb-2 font-mono text-[11px] uppercase tracking-[.15em] text-fg hover:border-accent hover:text-accent">{t("ctaLabel")} <span className="ms-3">→</span></Link></div></div>
+      </section>
     </div>
   );
 }

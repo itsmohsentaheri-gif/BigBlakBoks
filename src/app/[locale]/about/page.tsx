@@ -4,79 +4,17 @@ import PageHeader from "@/components/PageHeader";
 import InfoBlocks from "@/components/InfoBlocks";
 import Reveal from "@/components/Reveal";
 
-type ProcessStep = {
-  step: string;
-  title: string;
-  description: string;
-};
+type ProcessStep = { step: string; title: string; description: string };
 
-export default async function AboutPage({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
-  const { locale } = await params;
-  setRequestLocale(locale);
+export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = await params; setRequestLocale(locale);
   const t = await getTranslations("about");
-
   const blocks = t.raw("blocks") as { label: string; value: string }[];
   const process = t.raw("process") as ProcessStep[];
-
-  return (
-    <div className="mx-auto flex max-w-3xl flex-col gap-10">
-      <Reveal>
-        <PageHeader eyebrow={t("eyebrow")} kicker={t("kicker")} />
-      </Reveal>
-
-      <Reveal delay={0.08}>
-        <h1 className="font-display text-4xl font-semibold leading-[1.08] tracking-tight text-fg sm:text-5xl">
-          {t("headline")}
-        </h1>
-      </Reveal>
-
-      <Reveal delay={0.14}>
-        <p className="max-w-xl text-base leading-relaxed text-fg-dim md:text-lg">
-          {t("lead")}
-        </p>
-      </Reveal>
-
-      <Reveal delay={0.2}>
-        <InfoBlocks blocks={blocks} />
-      </Reveal>
-
-      <Reveal delay={0.26}>
-        <div className="flex flex-col gap-1 border-t border-line pt-6">
-          <span className="font-mono text-[11px] uppercase tracking-[0.15em] text-fg-faint">
-            {t("processTitle")}
-          </span>
-        </div>
-      </Reveal>
-
-      <ul className="flex flex-col gap-6">
-        {process.map((item, i) => (
-          <Reveal key={item.step} delay={0.3 + i * 0.05}>
-            <li className="flex items-baseline gap-5">
-              <span className="font-mono text-[11px] text-accent-dim">
-                {item.step}
-              </span>
-              <div className="flex flex-col gap-1">
-                <h3 className="font-display text-lg font-semibold text-fg">
-                  {item.title}
-                </h3>
-                <p className="max-w-lg text-sm leading-relaxed text-fg-dim">
-                  {item.description}
-                </p>
-              </div>
-            </li>
-          </Reveal>
-        ))}
-      </ul>
-
-      <Reveal delay={0.3 + process.length * 0.05 + 0.06}>
-        <p className="max-w-xl border-t border-line pt-6 font-display text-lg font-medium leading-snug text-fg/85">
-          {t("statement")}
-        </p>
-      </Reveal>
-    </div>
-  );
+  return <div className="mx-auto max-w-[1200px]">
+    <section className="grid gap-10 py-12 md:grid-cols-[.4fr_1fr] md:py-20"><Reveal><PageHeader eyebrow={t("eyebrow")} kicker={t("kicker")} /></Reveal><div><Reveal delay={.08}><h1 className="display-title font-display font-semibold text-fg">{t("headline")}</h1></Reveal><Reveal delay={.14}><p className="mt-8 max-w-2xl text-base leading-relaxed text-fg-dim md:text-lg">{t("lead")}</p></Reveal></div></section>
+    <section className="border-t border-line py-16 md:py-24"><InfoBlocks blocks={blocks} /></section>
+    <section className="border-t border-line py-16 md:py-24"><div className="mb-10 flex items-center justify-between"><span className="section-label">/ {t("processTitle")}</span><span className="font-mono text-[10px] text-fg-faint">01—04</span></div><ol className="grid gap-3 md:grid-cols-2">{process.map((item, i) => <Reveal key={item.step} delay={.08 + i * .05}><li className="metal-panel min-h-56 border border-line p-6 md:p-8"><div className="flex items-start justify-between"><span className="font-mono text-xs text-accent">{item.step}</span><span className="font-mono text-[10px] text-fg-faint">BB / 0{i + 1}</span></div><h2 className="mt-12 font-display text-3xl font-semibold tracking-[-.04em]">{item.title}</h2><p className="mt-3 max-w-sm text-sm leading-relaxed text-fg-dim">{item.description}</p></li></Reveal>)}</ol></section>
+    <Reveal><p className="max-w-4xl border-t border-line py-16 font-display text-4xl font-semibold leading-[.95] tracking-[-.05em] md:py-24 md:text-7xl">{t("statement")}</p></Reveal>
+  </div>;
 }
