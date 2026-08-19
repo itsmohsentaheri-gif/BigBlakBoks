@@ -35,7 +35,7 @@
   --font-mono: var(--font-mono);
 }
 
-/* Persian (fa) — route all font variables through Vazirmatn */
+/* Persian (fa) — route all font variables through Vazirmatn with proper text rendering */
 html[lang="fa"] {
   --font-display: var(--font-fa);
   --font-body: var(--font-fa);
@@ -46,6 +46,29 @@ html[lang="fa"] {
 html[lang="fa"] .section-label { font-size: 11px; letter-spacing: 0.08em; }
 html[lang="fa"] .text-\[10px\] { font-size: 11px; }
 html[lang="fa"] .text-\[9px\] { font-size: 10px; }
+
+/* Persian text rendering fixes - prevent letter separation */
+html[lang="fa"] body,
+html[lang="fa"] h1,
+html[lang="fa"] h2,
+html[lang="fa"] h3,
+html[lang="fa"] h4,
+html[lang="fa"] h5,
+html[lang="fa"] h6,
+html[lang="fa"] p,
+html[lang="fa"] span,
+html[lang="fa"] a,
+html[lang="fa"] div {
+  font-feature-settings: "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure proper ligature rendering for Persian */
+html[lang="fa"] * {
+  font-variant-ligatures: common-ligatures contextual;
+}
 
 * { border-color: var(--line); }
 html { background: var(--bg); color-scheme: dark; scroll-behavior: smooth; }
