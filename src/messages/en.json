@@ -7,6 +7,7 @@
   "nav": {
     "home": "home",
     "products": "products",
+    "portfolio": "portfolio",
     "about": "about us",
     "contact": "contact",
     "menu": "menu",
@@ -111,5 +112,51 @@
     "success": "got it — we'll be in touch soon.",
     "error": "something went wrong. try again or email us directly.",
     "close": "close"
+  },
+  "portfolio": {
+    "eyebrow": "bigblakboks / selected work",
+    "kicker": "04 / portfolio",
+    "headline": "projects we've built",
+    "lead": "a selection of systems, products, and digital experiences we've engineered from the ground up. each one a black box: complex inside, simple outside.",
+    "items": [
+      {
+        "index": "001",
+        "title": "E-Commerce Platform",
+        "description": "A full-stack e-commerce solution with custom inventory management, automated order processing, and real-time analytics dashboard. Built for scalability and speed.",
+        "category": "Web Application"
+      },
+      {
+        "index": "002",
+        "title": "Healthcare Management System",
+        "description": "Patient management platform connecting clinics, doctors, and pharmacies. Features appointment scheduling, electronic health records, and prescription tracking.",
+        "category": "Business System"
+      },
+      {
+        "index": "003",
+        "title": "Financial Analytics Dashboard",
+        "description": "Real-time financial data visualization tool for investment firms. Aggregates multiple data sources into actionable insights with customizable reports.",
+        "category": "Dashboard & Analytics"
+      },
+      {
+        "index": "004",
+        "title": "Restaurant Ordering App",
+        "description": "Mobile-first ordering system with kitchen display integration, inventory tracking, and customer loyalty program. Increased order efficiency by 40%.",
+        "category": "Mobile & Web App"
+      },
+      {
+        "index": "005",
+        "title": "Logistics Automation Platform",
+        "description": "End-to-end logistics management system with route optimization, fleet tracking, and automated dispatch. Reduced operational costs by 25%.",
+        "category": "Automation & Integration"
+      },
+      {
+        "index": "006",
+        "title": "SaaS Project Management Tool",
+        "description": "Collaborative project management platform with task automation, team workflows, and client portals. Designed for creative agencies and tech teams.",
+        "category": "SaaS Product"
+      }
+    ],
+    "ctaText": "Have a project in mind? Let's discuss how we can build a system tailored to your needs.",
+    "ctaLabel": "start a conversation"
   }
 }

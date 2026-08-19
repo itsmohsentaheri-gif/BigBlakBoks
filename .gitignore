@@ -1,37 +1,27 @@
 ```
-# Next.js
+# Next.js build outputs
 .next/
 out/
 
-# Dependencies
-node_modules/
-
-# Logs
-*.log
-.next/**/*.log
-
 # Environment variables
-.env.local
-.env
-.env.*
+.env*
+!.env.example
 
-# Cache
-.nyc_output/
-coverage/
-*.lcov
-
-# Editor
+# IDE and editor files
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
+*.tmp
+
+# Logs
+*.log
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# Build outputs
+# Build artifacts
 dist/
 build/
 target/

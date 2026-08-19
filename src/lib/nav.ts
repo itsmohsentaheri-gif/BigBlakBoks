@@ -1,7 +1,8 @@
 export const navItems = [
   { key: "home", href: "/", index: "01" },
   { key: "products", href: "/products", index: "02" },
-  { key: "about", href: "/about", index: "03" },
+  { key: "portfolio", href: "/portfolio", index: "03" },
+  { key: "about", href: "/about", index: "04" },
 ] as const;
 
 export const socialLinks = [
