@@ -9,6 +9,7 @@ import ContactDrawer from "./ContactDrawer";
 import { socialLinks } from "@/lib/nav";
 import { IconInstagram, IconLinkedin, IconGithub, IconTelegram, IconPlus, IconMenu, IconClose } from "./icons";
 import ScrollFrames from "./ScrollFrames";
+import FloatingParticles from "./FloatingParticles";
 
 const socialIcons = { instagram: IconInstagram, linkedin: IconLinkedin, github: IconGithub, telegram: IconTelegram };
 
@@ -27,6 +28,7 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
 
   return <div className="architectural-shell relative flex min-h-screen flex-col overflow-hidden">
     <div className="fixed inset-0 z-0 opacity-[0.25] pointer-events-none"><ScrollFrames /></div>
+    <FloatingParticles />
     <header className={`sticky top-0 z-40 border-b px-6 py-5 transition-colors md:px-12 ${scrolled ? "border-line bg-bg/85 backdrop-blur-xl" : "border-transparent bg-transparent"}`}>
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-8">
         <div className="flex items-center gap-3"><Image src="/media/logo-icon-512.png" alt="bigblakboks" width={34} height={34} className="opacity-90" /><div><div className="wordmark font-display text-sm font-semibold">BIGBLAK<span className="text-accent">BOKS</span></div><div className="font-mono text-[9px] uppercase tracking-[.22em] text-fg-faint">engineering lab</div></div></div>

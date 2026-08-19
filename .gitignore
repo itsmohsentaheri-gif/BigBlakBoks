@@ -1,48 +1,8 @@
-```
-# Dependencies
-node_modules/
+(src/main.py, README.md, config.json)
 
-# Build outputs
-dist/
-build/
-.next/
-out/
-
-# Environment variables
-.env
-.env.local
-.env.*
-
-# IDE specific
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Logs
-*.log
-
-# Python cache (if present in project)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
-
-# Temporary files
-*.tmp
-*.temp
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Package manager
-package-lock.json
-yarn.lock
-pnpm-lock.yaml
-```
+### Deleted files:
+[old/unused.py]
+### Modified files:
+[utils.py]
+###current .gitignore Content
+(empty)
