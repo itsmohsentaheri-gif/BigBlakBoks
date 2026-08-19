@@ -27,7 +27,8 @@ const manrope = Manrope({
 const vazirmatn = Vazirmatn({
   subsets: ["arabic", "latin"],
   variable: "--font-vazirmatn",
-  weight: ["400", "500", "600", "700"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const jetbrains = JetBrains_Mono({
