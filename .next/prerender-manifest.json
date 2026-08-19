@@ -94,7 +94,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 38546,
+      "htmlSize": 43853,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -122,7 +122,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 38462,
+      "htmlSize": 43769,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -150,7 +150,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 45889,
+      "htmlSize": 51887,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -178,7 +178,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 36625,
+      "htmlSize": 41932,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -206,7 +206,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 42008,
+      "htmlSize": 50095,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -234,7 +234,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 42429,
+      "htmlSize": 50516,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -262,7 +262,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 50618,
+      "htmlSize": 59044,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -290,7 +290,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 40416,
+      "htmlSize": 48503,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -475,8 +475,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "41d9e79ca7cf3810f566dc9b778431dc",
-    "previewModeSigningKey": "dede54b08558bf3fd531d5509d8ea19a12ef4f12e91c0bd257b2cabd1f2250d6",
-    "previewModeEncryptionKey": "db55636c72d6678241a6df451edf3ee4294db9cbe5116102a08fdd7aafb92226"
+    "previewModeId": "f4df5779ceb5a7858184ff071c20640c",
+    "previewModeSigningKey": "05e280817616e87c5bfc6d8249330fff2cfdea6471c51e9ad4c10171646a7a0c",
+    "previewModeEncryptionKey": "75b6d04fbae7c72e7bc166eedfb859cf572fd610cc89ad984585547bbfc3db7f"
   }
 }

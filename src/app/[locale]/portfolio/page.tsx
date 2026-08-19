@@ -5,9 +5,10 @@ import Reveal from "@/components/Reveal";
 import { Link } from "@/i18n/navigation";
 
 type PortfolioItem = { 
+  id: string;
   index: string; 
   title: string; 
-  description: string; 
+  shortDescription: string;
   category: string;
   image?: string;
 };
@@ -39,30 +40,32 @@ export default async function PortfolioPage({ params }: { params: Promise<{ loca
       <section className="border-t border-line">
         <div className="grid gap-12 py-12 md:grid-cols-2 md:gap-10 md:py-20">
           {items.map((item, i) => (
-            <Reveal key={item.index} delay={0.1 + i * 0.05}>
-              <article className="group relative overflow-hidden rounded-lg bg-bg-alt p-6 transition-all hover:shadow-lg metal-panel">
-                {/* Project Image Placeholder */}
-                <div className="mb-6 aspect-video w-full overflow-hidden rounded-md bg-fg-dim/10">
-                  <div className="flex h-full w-full items-center justify-center text-fg-faint">
-                    <span className="font-mono text-xs uppercase tracking-widest">Project Preview</span>
+            <Reveal key={item.id} delay={0.1 + i * 0.05}>
+              <Link href={`/portfolio/${item.id}`} className="group block">
+                <article className="group relative overflow-hidden rounded-lg bg-bg-alt p-6 transition-all hover:shadow-lg metal-panel">
+                  {/* Project Image Placeholder */}
+                  <div className="mb-6 aspect-video w-full overflow-hidden rounded-md bg-fg-dim/10">
+                    <div className="flex h-full w-full items-center justify-center text-fg-faint">
+                      <span className="font-mono text-xs uppercase tracking-widest">Project Preview</span>
+                    </div>
                   </div>
-                </div>
-                
-                {/* Project Info */}
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <span className="font-mono text-xs text-accent">{item.index}</span>
-                    <h2 className="mt-2 font-display text-2xl font-semibold leading-none tracking-[-.04em] text-fg transition-colors group-hover:text-accent md:text-3xl">
-                      {item.title}
-                    </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-fg-dim">{item.description}</p>
-                    <span className="mt-4 inline-block font-mono text-[10px] uppercase tracking-widest text-fg-faint">
-                      {item.category}
-                    </span>
+                  
+                  {/* Project Info */}
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <span className="font-mono text-xs text-accent">{item.index}</span>
+                      <h2 className="mt-2 font-display text-2xl font-semibold leading-none tracking-[-.04em] text-fg transition-colors group-hover:text-accent md:text-3xl">
+                        {item.title}
+                      </h2>
+                      <p className="mt-3 text-sm leading-relaxed text-fg-dim">{item.shortDescription}</p>
+                      <span className="mt-4 inline-block font-mono text-[10px] uppercase tracking-widest text-fg-faint">
+                        {item.category}
+                      </span>
+                    </div>
+                    <span className="font-mono text-xl text-fg-faint transition-colors group-hover:text-accent">↗</span>
                   </div>
-                  <span className="font-mono text-xl text-fg-faint transition-colors group-hover:text-accent">↗</span>
-                </div>
-              </article>
+                </article>
+              </Link>
             </Reveal>
           ))}
         </div>

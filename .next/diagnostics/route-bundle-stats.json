@@ -43,6 +43,20 @@
     ]
   },
   {
+    "route": "/[locale]/portfolio/[id]",
+    "firstLoadUncompressedJsBytes": 649858,
+    "firstLoadChunkPaths": [
+      ".next/static/chunks/3fntmmi971322.js",
+      ".next/static/chunks/3jwtpsl5iwlak.js",
+      ".next/static/chunks/31fjbrf1l731f.js",
+      ".next/static/chunks/19a_wf8maoaz0.js",
+      ".next/static/chunks/22emux2du5j43.js",
+      ".next/static/chunks/2yfh_cfzr1nyc.js",
+      ".next/static/chunks/4561u0v7ysn3r.js",
+      ".next/static/chunks/turbopack-36fp1bh64r4w-.js"
+    ]
+  },
+  {
     "route": "/[locale]/products",
     "firstLoadUncompressedJsBytes": 649858,
     "firstLoadChunkPaths": [
