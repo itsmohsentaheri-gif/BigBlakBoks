@@ -94,7 +94,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 35881,
+      "htmlSize": 38546,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -122,7 +122,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 35797,
+      "htmlSize": 38462,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -146,11 +146,39 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/en/portfolio": {
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 45889,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/portfolio",
+      "dataRoute": "/en/portfolio.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/en/products": {
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 33960,
+      "htmlSize": 36625,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -178,7 +206,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 38452,
+      "htmlSize": 42008,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -206,7 +234,7 @@
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 38873,
+      "htmlSize": 42429,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -230,11 +258,39 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/fa/portfolio": {
+      "routeType": "page",
+      "response": "complete",
+      "compute": "static",
+      "htmlSize": 50618,
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/[locale]/portfolio",
+      "dataRoute": "/fa/portfolio.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/fa/products": {
       "routeType": "page",
       "response": "complete",
       "compute": "static",
-      "htmlSize": 36860,
+      "htmlSize": 40416,
       "experimentalBypassFor": [
         {
           "type": "header",
@@ -354,6 +410,37 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/[locale]/portfolio": {
+      "routeType": "page",
+      "response": "empty",
+      "compute": "blocking",
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "next-action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "routeRegex": "^/([^/]+?)/portfolio(?:/)?$",
+      "dataRoute": "/[locale]/portfolio.rsc",
+      "fallback": null,
+      "fallbackRootParams": [],
+      "fallbackRouteParams": [],
+      "dataRouteRegex": "^/([^/]+?)/portfolio\\.rsc$",
+      "prefetchDataRoute": null,
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/[locale]/products": {
       "routeType": "page",
       "response": "empty",
@@ -388,8 +475,8 @@
   },
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "4c8276abf8ba195b0bda7937497753ce",
-    "previewModeSigningKey": "f73f34fe7933470c326b1db8704608dea900466b601178fe3c0da99901b0d1a9",
-    "previewModeEncryptionKey": "85b2bd9f55427018dc1f294f943aa82975e38f8fb4859ab52fdb8e705fc41a49"
+    "previewModeId": "41d9e79ca7cf3810f566dc9b778431dc",
+    "previewModeSigningKey": "dede54b08558bf3fd531d5509d8ea19a12ef4f12e91c0bd257b2cabd1f2250d6",
+    "previewModeEncryptionKey": "db55636c72d6678241a6df451edf3ee4294db9cbe5116102a08fdd7aafb92226"
   }
 }
