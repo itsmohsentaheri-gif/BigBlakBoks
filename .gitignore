@@ -1,1 +1,40 @@
-Nothing should be ignored based on the provided file changes. The only modified file is 'src/components/ScrollFrames.tsx', which is a source code file and should not be added to .gitignore.
+```ts
+// Dependencies
+node_modules/
+
+// Build outputs
+dist/
+build/
+.next/
+.nuxt/
+out/
+public/build/
+
+// Cache directories
+.cache/
+.temp/
+.tmp/
+
+// Environment variables
+.env
+.env.local
+.env.*
+!.env.example
+
+// Logs
+*.log
+
+// OS generated files
+.DS_Store
+Thumbs.db
+
+// IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+// Coverage
+coverage/
+.nyc_output/
+```

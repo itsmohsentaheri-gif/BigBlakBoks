@@ -22,14 +22,22 @@ export default function ScrollFrames() {
     const images: HTMLImageElement[] = [];
     let loadedCount = 0;
     const imageDimensions: { w: number; h: number }[] = [];
+    let allLoaded = false;
 
     for (let i = 1; i <= FRAME_COUNT; i++) {
       const img = new Image();
       img.src = FRAME_PATH(i);
+      img.decoding = "async";
       img.onload = () => {
         imageDimensions[i - 1] = { w: img.naturalWidth, h: img.naturalHeight };
         loadedCount++;
-        if (loadedCount === 1) draw(0);
+        if (loadedCount === 1) {
+          resize();
+          draw(0);
+        }
+        if (loadedCount === FRAME_COUNT) {
+          allLoaded = true;
+        }
       };
       images.push(img);
     }
@@ -38,27 +46,31 @@ export default function ScrollFrames() {
     let cw = 0;
     let ch = 0;
     let scaleCache = { dw: 0, dh: 0, dx: 0, dy: 0 };
+    let resizeRafId = 0;
 
     function resize() {
       if (!canvas) return;
-      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      cw = window.innerWidth * dpr;
-      ch = window.innerHeight * dpr;
-      canvas.width = cw;
-      canvas.height = ch;
-      
-      const firstImg = images[0];
-      if (firstImg && firstImg.complete && imageDimensions[0]) {
-        const { w: iw, h: ih } = imageDimensions[0];
-        const scale = Math.max(cw / iw, ch / ih);
-        scaleCache = {
-          dw: iw * scale,
-          dh: ih * scale,
-          dx: (cw - iw * scale) / 2,
-          dy: (ch - ih * scale) / 2,
-        };
-      }
-      draw(currentFrame);
+      cancelAnimationFrame(resizeRafId);
+      resizeRafId = requestAnimationFrame(() => {
+        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+        cw = window.innerWidth * dpr;
+        ch = window.innerHeight * dpr;
+        canvas.width = cw;
+        canvas.height = ch;
+        
+        const firstImg = images[0];
+        if (firstImg && firstImg.complete && imageDimensions[0]) {
+          const { w: iw, h: ih } = imageDimensions[0];
+          const scale = Math.max(cw / iw, ch / ih);
+          scaleCache = {
+            dw: iw * scale,
+            dh: ih * scale,
+            dx: (cw - iw * scale) / 2,
+            dy: (ch - ih * scale) / 2,
+          };
+        }
+        draw(currentFrame);
+      });
     }
 
     function draw(frameFloat: number) {
@@ -77,6 +89,7 @@ export default function ScrollFrames() {
     let targetFrame = 0;
     let rafId = 0;
     let lastScrollY = 0;
+    let scrollTimeout: NodeJS.Timeout | null = null;
 
     function getScrollProgress() {
       const doc = document.documentElement;
@@ -87,16 +100,26 @@ export default function ScrollFrames() {
 
     function onScroll() {
       const scrollY = window.scrollY;
-      if (Math.abs(scrollY - lastScrollY) < 5) return;
+      if (Math.abs(scrollY - lastScrollY) < 10) return;
       lastScrollY = scrollY;
       targetFrame = getScrollProgress() * (FRAME_COUNT - 1);
+      
+      if (scrollTimeout) clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        scrollTimeout = null;
+      }, 150);
     }
 
     function tick() {
-      currentFrame += (targetFrame - currentFrame) * 0.15;
-      if (Math.abs(targetFrame - currentFrame) < 0.02) {
+      const diff = Math.abs(targetFrame - currentFrame);
+      if (diff > 0.5) {
+        currentFrame += (targetFrame - currentFrame) * 0.25;
+      } else if (diff > 0.01) {
+        currentFrame += (targetFrame - currentFrame) * 0.15;
+      } else {
         currentFrame = targetFrame;
       }
+      
       ctx.clearRect(0, 0, cw, ch);
       draw(currentFrame);
       rafId = requestAnimationFrame(tick);
@@ -117,6 +140,8 @@ export default function ScrollFrames() {
       window.removeEventListener("resize", resize);
       window.removeEventListener("scroll", onScroll);
       if (rafId) cancelAnimationFrame(rafId);
+      if (resizeRafId) cancelAnimationFrame(resizeRafId);
+      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, []);
 
@@ -124,6 +149,7 @@ export default function ScrollFrames() {
     <canvas
       ref={canvasRef}
       className="h-full w-full object-cover opacity-[0.55]"
+      style={{ willChange: 'transform' }}
     />
   );
 }
