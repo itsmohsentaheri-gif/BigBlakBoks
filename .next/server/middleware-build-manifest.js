@@ -4,12 +4,12 @@ globalThis.__BUILD_MANIFEST = {
   },
   "devFiles": [],
   "polyfillFiles": [
-    "static/chunks/0cz1d0mv5g_q7.js"
+    "static/chunks/1x10nw849njs6.js"
   ],
   "lowPriorityFiles": [
-    "static/4oVNX-7CshLUj0PQFgRa6/_buildManifest.js",
-    "static/4oVNX-7CshLUj0PQFgRa6/_ssgManifest.js",
-    "static/4oVNX-7CshLUj0PQFgRa6/_clientMiddlewareManifest.js"
+    "static/viJia5uu1wpUHtOyCZ9XA/_buildManifest.js",
+    "static/viJia5uu1wpUHtOyCZ9XA/_ssgManifest.js",
+    "static/viJia5uu1wpUHtOyCZ9XA/_clientMiddlewareManifest.js"
   ],
   "rootMainFiles": [
     "static/chunks/22emux2du5j43.js",

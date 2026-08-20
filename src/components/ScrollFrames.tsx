@@ -82,14 +82,11 @@ export default function ScrollFrames() {
       const img = images[index];
       if (!img || !img.complete || img.naturalWidth === 0) return;
 
+      ctx.clearRect(0, 0, cw, ch);
       ctx.drawImage(img, scaleCache.dx, scaleCache.dy, scaleCache.dw, scaleCache.dh);
     }
 
     let currentFrame = 0;
-    let targetFrame = 0;
-    let rafId = 0;
-    let lastScrollY = 0;
-    let scrollTimeout: NodeJS.Timeout | null = null;
 
     function getScrollProgress() {
       const doc = document.documentElement;
@@ -99,31 +96,10 @@ export default function ScrollFrames() {
     }
 
     function onScroll() {
-      const scrollY = window.scrollY;
-      if (Math.abs(scrollY - lastScrollY) < 10) return;
-      lastScrollY = scrollY;
-      targetFrame = getScrollProgress() * (FRAME_COUNT - 1);
-      
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        scrollTimeout = null;
-      }, 150);
+      currentFrame = getScrollProgress() * (FRAME_COUNT - 1);
+      draw(currentFrame);
     }
 
-    function tick() {
-      const diff = Math.abs(targetFrame - currentFrame);
-      if (diff > 0.5) {
-        currentFrame += (targetFrame - currentFrame) * 0.25;
-      } else if (diff > 0.01) {
-        currentFrame += (targetFrame - currentFrame) * 0.15;
-      } else {
-        currentFrame = targetFrame;
-      }
-      
-      ctx.clearRect(0, 0, cw, ch);
-      draw(currentFrame);
-      rafId = requestAnimationFrame(tick);
-    }
 
     resize();
     window.addEventListener("resize", resize);
@@ -133,15 +109,12 @@ export default function ScrollFrames() {
     } else {
       window.addEventListener("scroll", onScroll, { passive: true });
       onScroll();
-      rafId = requestAnimationFrame(tick);
     }
 
     return () => {
       window.removeEventListener("resize", resize);
       window.removeEventListener("scroll", onScroll);
-      if (rafId) cancelAnimationFrame(rafId);
       if (resizeRafId) cancelAnimationFrame(resizeRafId);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
     };
   }, []);
 
