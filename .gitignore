@@ -2,74 +2,25 @@
 # Next.js build outputs
 .next/
 
-# Dependencies
-node_modules/
-
 # Environment variables
 .env.local
 .env
+
+# Dependencies
+node_modules/
 
 # Logs
 *.log
 
 # Temporary files
 *.tmp
+
+# Editor files
+.vscode/
+.idea/
 *.swp
 
 # OS generated files
 .DS_Store
 Thumbs.db
-
-# Coverage reports
-coverage/
-htmlcov/
-.coverage
-
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Build outputs
-dist/
-build/
-target/
-
-# Virtual environments
-venv/
-.venv/
-.env/
-
-# IDE specific
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Testing
-.mypy_cache/
-.pytest_cache/
-.nyc_output/
-coverage/
-
-# Compression artifacts
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
 ```
